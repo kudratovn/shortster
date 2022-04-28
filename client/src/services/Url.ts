@@ -1,13 +1,14 @@
 import { SERVER_ROUTES } from "../constants/server";
 import { ShortCodeDTO } from "../models/dto/ShortCodeDTO";
 import { ResultContainer } from "../models/ResultContainer";
+import { Url } from "../models/Urls";
 import http from "./Http";
 
 
 export class UrlService {
-  async createUrl(dto: ShortCodeDTO): Promise<ResultContainer<string, string>> {
+  async createUrl(dto: ShortCodeDTO): Promise<ResultContainer<Url, string>> {
     try {
-      const { data } = await http.post<ResultContainer<string, string>>(
+      const { data } = await http.post<ResultContainer<Url, string>>(
         SERVER_ROUTES.SUBMIT,
         dto
       );

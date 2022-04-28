@@ -17,21 +17,34 @@ const common_1 = require("@nestjs/common");
 const UrlService_1 = require("../services/UrlService");
 const YupValidationPipe_1 = require("../pipes/YupValidationPipe");
 const createUrlValidationSchena_1 = require("../validator/createUrlValidationSchena");
+const common_2 = require("../constants/common");
 let UrlController = class UrlController {
     constructor(urlService) {
         this.urlService = urlService;
     }
-    async create(dto) {
-        console.log('dto', dto);
-        return dto;
+    async create(dto, res) {
+        const url = await this.urlService.createUrl(dto);
+        if (url) {
+            return res.send({
+                status: common_2.RESULT_STATUSES.SUCCESS,
+                data: url,
+            });
+        }
+        else {
+            return res.send({
+                status: common_2.RESULT_STATUSES.ERROR,
+                error: 'Failed to create url',
+            });
+        }
     }
 };
 __decorate([
     common_1.Post('/submit'),
     common_1.UsePipes(new YupValidationPipe_1.YupValidationPipe(createUrlValidationSchena_1.patchRuleValidationScheme)),
     __param(0, common_1.Body()),
+    __param(1, common_1.Response()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", Promise)
 ], UrlController.prototype, "create", null);
 UrlController = __decorate([
