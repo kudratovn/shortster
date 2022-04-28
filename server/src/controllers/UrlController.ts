@@ -18,7 +18,7 @@ import { patchRuleValidationScheme } from 'src/validator/createUrlValidationSche
 export class UrlController {
   constructor(private readonly urlService: UrlService) { }
 
-  @Post()
+  @Post('/submit')
   @UsePipes(new YupValidationPipe(patchRuleValidationScheme))
   async create(@Body() dto: ShortCodeDTO) {
     return dto;
