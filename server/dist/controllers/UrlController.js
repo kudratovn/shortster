@@ -22,6 +22,7 @@ let UrlController = class UrlController {
         this.urlService = urlService;
     }
     async create(dto) {
+        console.log('dto', dto);
         return dto;
     }
 };

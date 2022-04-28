@@ -5,6 +5,6 @@ const yup = require("yup");
 exports.patchRuleValidationScheme = yup.object().shape({
     url: yup.string().url().required('Url is required'),
     autoGenerate: yup.boolean().required('Auto generate is required'),
-    short_code: yup.string().when("autoGenerate", { is: false, then: yup.string().min(4, 'Name must be at least 4 characters').matches(/[^a-zA-Z0-9]/, "Name must be character or number").required('Short code is required') })
+    short_code: yup.string().when("autoGenerate", { is: (autoGenerate) => !autoGenerate, then: yup.string().min(4, 'Name must be at least 4 characters').matches(/[A-Z0-9]*/, "Name must be character or number") }).nullable()
 });
 //# sourceMappingURL=createUrlValidationSchena.js.map

@@ -21,6 +21,7 @@ export class UrlController {
   @Post('/submit')
   @UsePipes(new YupValidationPipe(patchRuleValidationScheme))
   async create(@Body() dto: ShortCodeDTO) {
+    console.log('dto', dto)
     return dto;
   }
 }

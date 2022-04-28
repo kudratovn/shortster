@@ -5,6 +5,63 @@ body {
 
 .ctn-center {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 25%;
+  left: 25%;
+  align-items: center;
+}
+
+.create-url {
+  padding-top: 5rem;
+}
+
+.create-url section .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.create-url section .container form {
+  padding: 6% 6%;
+  border: 2px solid #eee;
+}
+
+.create-url section .container form h1 {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+.form-item {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+
+.form-item label {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.form-item input {
+  font-size: 16px;
+  height: 30px;
+  border: 2px solid #eee;
+  border-radius: 5px;
+}
+
+.form-item-btn {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.form-item-btn button {
+  font-size: 16px;
+  padding: 8px 0;
+  border: 2px solid #eee;
+  cursor: pointer;
+}
+
+.lgn-error-p {
+  color: red;
+  width: 300px;
 }

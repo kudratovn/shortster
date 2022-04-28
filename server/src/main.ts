@@ -12,8 +12,12 @@ async function bootstrap() {
       } else {
         cb(new Error('Not allowed by CORS!'));
       }
-    }
+    },
+    allowedHeaders:
+      'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept, Observe, Authorization',
+    methods: 'GET,PUT,PATCH,POST,DELETE,UPDATE,OPTIONS',
+    credentials: true,
   });
-  await app.listen(3000);
+  await app.listen(configService.config.PORT);
 }
 bootstrap();
