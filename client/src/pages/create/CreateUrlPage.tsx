@@ -8,6 +8,7 @@ import { urlService } from "./../../services/Url";
 import { STATUSES, TypeStatuses } from "../../constants/server";
 import { Url } from "../../models/Urls";
 import { browserHistory } from "../../services/BrowserHistory";
+import { Header } from "../../components/Header";
 
 export type CreateUrlPageProps = {};
 export const CreateUrlPage: React.FC<CreateUrlPageProps> = () => {
@@ -64,11 +65,8 @@ export const CreateUrlPage: React.FC<CreateUrlPageProps> = () => {
     setNewUrl(null);
   }
 
-  const handleCheckCode = () => {
-    browserHistory.push('/shortcode');
-  }
-
   return <>
+    <Header />
     <main className="create-url">
       <section>
         <div className="container">
@@ -134,9 +132,6 @@ export const CreateUrlPage: React.FC<CreateUrlPageProps> = () => {
                 </div>
             </form>
           }
-        </div>
-        <div className="form-item-btn get-url">
-          <button onClick={handleCheckCode}>Check url</button>
         </div>
       </section>
     </main>

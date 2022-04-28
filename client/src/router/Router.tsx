@@ -11,10 +11,10 @@ import { browserHistory } from "../services/BrowserHistory";
 export const Router: React.FC = () => (
     <Rr history={browserHistory}>
       <Switch>
-        <Route path={ROUTES.ROOT} exact component={() => <Redirect to={ROUTES.URL} />} />
-        <Route path={ROUTES.URL} component={CreateUrlPage} />
-        <Route path={`${ROUTES.URL}/shortcode`} component={RedirectPage} />
-        <Route path={`${ROUTES.URL}/shortcode/stats`} component={GetUrlPage} />
+        <Route path={ROUTES.ROOT} exact component={() => <Redirect to={ROUTES.CREATE} />} />
+        <Route path={ROUTES.CREATE} component={CreateUrlPage} />
+        <Route path={ROUTES.REDIRECT} component={RedirectPage} />
+        <Route path={ROUTES.GET} component={GetUrlPage} />
       </Switch>
     </Rr>
   );

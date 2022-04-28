@@ -1,4 +1,5 @@
 export const SERVER_ROUTES = {
+  ROOT: "/",
   SUBMIT: "/submit",
 } as const;
 

@@ -19,6 +19,12 @@ export class UrlService {
     return url || null;
   }
 
+  async useUrl(url: Urls) {
+    url.times_redeemed = url.times_redeemed + 1;
+    url.updated_at = new Date(moment().utc().format('YYYY-MM-DDTHH:mm:ss.SSS'));
+    await this.urlRepository.save(url);
+  }
+
   async createUrl(dto: ShortCodeDTO): Promise<Urls | null> {
     let code;
     const { short_code = null, url } = dto;

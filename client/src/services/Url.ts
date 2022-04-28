@@ -20,6 +20,20 @@ export class UrlService {
       }
     }
   }
+
+  async redirect(short_code: string): Promise<ResultContainer<string, string>> {
+    try {
+      const { data } = await http.get<ResultContainer<string, string>>(
+        `/${short_code}`
+      );
+      return data;
+    } catch (error) {
+      return {
+        status: "error",
+        error: "server error"
+      }
+    }
+  }
 }
 
 export const urlService = new UrlService();

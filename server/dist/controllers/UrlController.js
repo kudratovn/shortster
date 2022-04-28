@@ -37,6 +37,22 @@ let UrlController = class UrlController {
             });
         }
     }
+    async redirect(short_code, res) {
+        const url = await this.urlService.getUrlByCode(short_code);
+        if (url) {
+            await this.urlService.useUrl(url);
+            return res.send({
+                status: common_2.RESULT_STATUSES.SUCCESS,
+                data: url.url,
+            });
+        }
+        else {
+            return res.send({
+                status: common_2.RESULT_STATUSES.ERROR,
+                error: 'Failed to create url',
+            });
+        }
+    }
 };
 __decorate([
     common_1.Post('/submit'),
@@ -47,6 +63,14 @@ __decorate([
     __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", Promise)
 ], UrlController.prototype, "create", null);
+__decorate([
+    common_1.Get('/:short_code'),
+    __param(0, common_1.Param('short_code')),
+    __param(1, common_1.Response()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], UrlController.prototype, "redirect", null);
 UrlController = __decorate([
     common_1.Controller(),
     __metadata("design:paramtypes", [UrlService_1.UrlService])

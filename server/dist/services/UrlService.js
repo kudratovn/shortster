@@ -17,6 +17,7 @@ const common_1 = require("@nestjs/common");
 const typeorm_1 = require("typeorm");
 const typeorm_2 = require("@nestjs/typeorm");
 const short_unique_id_1 = require("short-unique-id");
+const moment = require("moment");
 const Urls_1 = require("../entity/Urls");
 let UrlService = class UrlService {
     constructor(urlRepository) {
@@ -25,6 +26,11 @@ let UrlService = class UrlService {
     async getUrlByCode(code) {
         const url = await this.urlRepository.findOne({ where: { short_code: code } });
         return url || null;
+    }
+    async useUrl(url) {
+        url.times_redeemed = url.times_redeemed + 1;
+        url.updated_at = new Date(moment().utc().format('YYYY-MM-DDTHH:mm:ss.SSS'));
+        await this.urlRepository.save(url);
     }
     async createUrl(dto) {
         let code;

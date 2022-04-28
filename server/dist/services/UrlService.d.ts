@@ -5,6 +5,7 @@ export declare class UrlService {
     private readonly urlRepository;
     constructor(urlRepository: Repository<Urls>);
     getUrlByCode(code: string): Promise<Urls | null>;
+    useUrl(url: Urls): Promise<void>;
     createUrl(dto: ShortCodeDTO): Promise<Urls | null>;
     generateUrl(): Promise<any>;
     generateCode(): any;
