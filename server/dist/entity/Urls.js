@@ -19,7 +19,7 @@ let Urls = Urls_1 = class Urls {
         this.times_redeemed = 0;
         this.short_code = short_code;
         this.created_at = new Date();
-        this.updated_at = null;
+        this.updated_at = new Date();
     }
     static create(url, short_code) {
         const id = uuid_1.v4();
@@ -47,8 +47,8 @@ __decorate([
     __metadata("design:type", Date)
 ], Urls.prototype, "created_at", void 0);
 __decorate([
-    typeorm_1.Column({ type: 'date', nullable: true }),
-    __metadata("design:type", Object)
+    typeorm_1.Column(),
+    __metadata("design:type", Date)
 ], Urls.prototype, "updated_at", void 0);
 Urls = Urls_1 = __decorate([
     typeorm_1.Entity('urls'),

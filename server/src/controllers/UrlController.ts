@@ -59,4 +59,22 @@ export class UrlController {
       })
     }
   }
+  @Get('/:short_code/stats')
+  async get(
+    @Param('short_code') short_code: string,
+    @Res() res: Response
+  ) {
+    const url = await this.urlService.getUrlByCode(short_code);
+    if(url) {
+      return res.send({
+        status: RESULT_STATUSES.SUCCESS,
+        data: url,
+      })
+    } else {
+      return res.send({
+        status: RESULT_STATUSES.ERROR,
+        error: 'Failed to create url',
+      })
+    }
+  }
 }

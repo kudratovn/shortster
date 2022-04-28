@@ -25,6 +25,12 @@ body {
   border: 2px solid #eee;
 }
 
+.result-container {
+  padding: 6% 6%;
+  border: 2px solid #eee;
+  width: 30%;
+}
+
 .create-url section .container form h1 {
   text-align: center;
   padding: 0;
@@ -106,4 +112,14 @@ nav ul li {
 
 .header-btn {
   cursor: pointer;
+}
+
+.url-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+}
+
+.url-item span:nth-child(2) {
+  align-items: center;
 }

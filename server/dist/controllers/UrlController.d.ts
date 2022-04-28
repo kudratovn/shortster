@@ -6,4 +6,5 @@ export declare class UrlController {
     constructor(urlService: UrlService);
     create(dto: ShortCodeDTO, res: Response): Promise<Response<any, Record<string, any>>>;
     redirect(short_code: string, res: Response): Promise<Response<any, Record<string, any>>>;
+    get(short_code: string, res: Response): Promise<Response<any, Record<string, any>>>;
 }

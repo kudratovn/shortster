@@ -4,7 +4,7 @@ export default class Urls {
     short_code: string;
     times_redeemed: number;
     readonly created_at: Date;
-    updated_at: Date | null;
+    updated_at: Date;
     private constructor();
     static create(url: string, short_code: string): Urls;
 }

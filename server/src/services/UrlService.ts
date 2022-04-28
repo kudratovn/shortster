@@ -21,8 +21,9 @@ export class UrlService {
 
   async useUrl(url: Urls) {
     url.times_redeemed = url.times_redeemed + 1;
-    url.updated_at = new Date(moment().utc().format('YYYY-MM-DDTHH:mm:ss.SSS'));
-    await this.urlRepository.save(url);
+    url.updated_at = new Date();
+    const nwutl = await this.urlRepository.save(url);
+    console.log('nwutl', nwutl)
   }
 
   async createUrl(dto: ShortCodeDTO): Promise<Urls | null> {

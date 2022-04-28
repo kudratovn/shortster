@@ -10,7 +10,7 @@ export class Init1651124302712 implements MigrationInterface {
                 short_code character varying NOT NULL,
                 times_redeemed integer NOT NULL DEFAULT 0,
                 created_at timestamp NOT NULL DEFAULT NOW(),
-                updated_at timestamp DEFAULT NULL
+                updated_at timestamp NOT NULL
             );`
         );
     }

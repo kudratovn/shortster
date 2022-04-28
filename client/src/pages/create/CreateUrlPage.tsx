@@ -32,7 +32,7 @@ export const CreateUrlPage: React.FC<CreateUrlPageProps> = () => {
       autoGenerate: values.autoGenerate,
       short_code: values.short_code
     }
-    const res = await urlService.createUrl(payload);
+    const res = await urlService.create(payload);
     setStatus(res.status);
     if(res.status === STATUSES.SUCCESS) {
       // @ts-ignore
@@ -56,7 +56,7 @@ export const CreateUrlPage: React.FC<CreateUrlPageProps> = () => {
 
   useEffect(() => {
     if(status === STATUSES.ERROR) {
-      formik.setFieldError("short_code", "Shot code already in use.")
+      formik.setFieldError("short_code", "Short code already in use.")
     }
   }, [status])
 
@@ -92,7 +92,7 @@ export const CreateUrlPage: React.FC<CreateUrlPageProps> = () => {
                 />
               </div>
               <div className="form-item-btn">
-                <button onClick={handleReset}>Re Create</button>
+                <button onClick={handleReset}>Re-create</button>
               </div>
             </div> : 
             <form onSubmit={formik.handleSubmit}>

@@ -22,8 +22,8 @@ export default class Urls {
   @Column()
   readonly created_at: Date;
 
-  @Column({ type: 'date', nullable: true })
-  updated_at: Date | null;
+  @Column()
+  updated_at: Date;
 
   private constructor(
     id: string,
@@ -35,7 +35,7 @@ export default class Urls {
     this.times_redeemed = 0;
     this.short_code = short_code;
     this.created_at = new Date();
-    this.updated_at = null;
+    this.updated_at = new Date();
   }
 
   public static create(

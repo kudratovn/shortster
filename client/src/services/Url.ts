@@ -6,7 +6,7 @@ import http from "./Http";
 
 
 export class UrlService {
-  async createUrl(dto: ShortCodeDTO): Promise<ResultContainer<Url, string>> {
+  async create(dto: ShortCodeDTO): Promise<ResultContainer<Url, string>> {
     try {
       const { data } = await http.post<ResultContainer<Url, string>>(
         SERVER_ROUTES.SUBMIT,
@@ -25,6 +25,20 @@ export class UrlService {
     try {
       const { data } = await http.get<ResultContainer<string, string>>(
         `/${short_code}`
+      );
+      return data;
+    } catch (error) {
+      return {
+        status: "error",
+        error: "server error"
+      }
+    }
+  }
+
+  async get(short_code: string): Promise<ResultContainer<Url, string>> {
+    try {
+      const { data } = await http.get<ResultContainer<Url, string>>(
+        `/${short_code}/stats`
       );
       return data;
     } catch (error) {
