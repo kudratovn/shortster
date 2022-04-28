@@ -6,9 +6,21 @@ import {
   Param,
   UsePipes,
   Controller,
+  ValidationPipe
 } from '@nestjs/common';
 
-@Controller('api/url')
+import { UrlService } from 'src/services/UrlService';
+
+import { ShortCodeDTO } from 'src/models/dto/shortCodeDTO';
+import { YupValidationPipe } from 'src/pipes/YupValidationPipe';
+import { patchRuleValidationScheme } from 'src/validator/createUrlValidationSchena';
+@Controller()
 export class UrlController {
-  
+  constructor(private readonly urlService: UrlService) { }
+
+  @Post()
+  @UsePipes(new YupValidationPipe(patchRuleValidationScheme))
+  async create(@Body() dto: ShortCodeDTO) {
+    return dto;
+  }
 }
