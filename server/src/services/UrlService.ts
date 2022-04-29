@@ -2,9 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import ShortUniqueId from 'short-unique-id';
-import * as moment from 'moment';
 
-import Urls from 'src/entity/Urls';
+import Urls from './../entity/Urls';
 import { ShortCodeDTO } from 'src/models/dto/shortCodeDTO';
 
 @Injectable()
@@ -22,12 +21,12 @@ export class UrlService {
   async useUrl(url: Urls) {
     url.times_redeemed = url.times_redeemed + 1;
     url.updated_at = new Date();
-    const nwutl = await this.urlRepository.save(url);
-    console.log('nwutl', nwutl)
+    await this.urlRepository.save(url);
   }
 
   async createUrl(dto: ShortCodeDTO): Promise<Urls | null> {
     let code;
+    console.log('dto: ', dto)
     const { short_code = null, url } = dto;
     if(dto.autoGenerate) {
       code = await this.generateUrl();
@@ -41,6 +40,7 @@ export class UrlService {
     }
     const newUrl = Urls.create(url, code)
     await this.urlRepository.save(newUrl);
+    console.log('newUrl', newUrl)
     return newUrl;
   }
 
