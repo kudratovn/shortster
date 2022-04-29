@@ -11,9 +11,7 @@
      "outDir": "./dist",
      "baseUrl": "./",
      "incremental": true,
-     "paths": {
-      "@/*": ["src/*"]
-    }
+     "moduleResolution": "node"
    },
    "exclude": [
      "node_modules",

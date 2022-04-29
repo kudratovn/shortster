@@ -13,7 +13,6 @@ import { Response } from 'express';
 
 import { UrlService } from './../services/UrlService';
 
-// @ts-ignore
 import { ShortCodeDTO } from 'src/models/dto/shortCodeDTO';
 import { YupValidationPipe } from './..//pipes/YupValidationPipe';
 import { patchRuleValidationScheme } from './../validator/createUrlValidationSchena';

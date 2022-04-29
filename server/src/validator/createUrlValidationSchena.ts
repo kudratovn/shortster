@@ -1,7 +1,6 @@
 import { YupShape } from 'src/models/YupShape';
 import * as yup from 'yup';
 
-// @ts-ignore
 import { ShortCodeDTO } from 'src/models/dto/shortCodeDTO';
 
 export const patchRuleValidationScheme = yup.object().shape<YupShape<Partial<ShortCodeDTO>>>({
