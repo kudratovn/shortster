@@ -8,7 +8,8 @@ class Http {
   private readonly axios: AxiosInstance;
   constructor() {
     this.axios = Axios.create({
-      baseURL: process.env.REACT_APP_BASE_URL
+      baseURL: process.env.REACT_APP_BASE_URL,
+      withCredentials: true,
     });
 
     this.axios.interceptors.response.use(
