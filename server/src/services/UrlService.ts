@@ -26,36 +26,36 @@ export class UrlService {
 
   async createUrl(dto: ShortCodeDTO): Promise<Urls | null> {
     let code;
-    console.log('dto: ', dto)
     const { short_code = null, url } = dto;
     if(dto.autoGenerate) {
-      code = await this.generateUrl();
+      code = await this.generateCode();
     } else {
-      if(!short_code)
+      code = await this.manualCode(short_code);
+      if(!code)
         return null;
-      const url = await this.getUrlByCode(short_code);
-      if(url)
-        return null;
-      code = short_code;
     }
     const newUrl = Urls.create(url, code)
     await this.urlRepository.save(newUrl);
-    console.log('newUrl', newUrl)
     return newUrl;
   }
 
-  async generateUrl() {
-    let generatedCode = this.generateCode();
+  async manualCode(short_code: string | null) {
+    if(!short_code)
+      return null;
+    const url = await this.getUrlByCode(short_code);
+    if(url)
+      return null;
+    return short_code;
+  }
+
+  async generateCode(): Promise<string> {
+    const uid = new ShortUniqueId();
+    let generatedCode = uid();
     let url = await this.getUrlByCode(generatedCode);
     if(!url) {
       return generatedCode;
     } else {
-      await this.generateUrl()
+      return await this.generateCode()
     }
-  }
-
-  generateCode() {
-    const uid = new ShortUniqueId();
-    return uid();
   }
 }
