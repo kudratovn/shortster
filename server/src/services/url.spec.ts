@@ -31,8 +31,8 @@ describe('UrlService', () => {
   it('should define the instance of url repository', () => {
     expect(service).toBeDefined();
   });
-  it('should generate short code length of 6', () => {
-    const generated = service.generateCode();
+  it('should generate short code length of 6', async () => {
+    const generated = await service.generateCode();
     expect(generated.length).toBe(6);
   })
   it('should call utl create method', async () => {
