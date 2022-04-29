@@ -39,7 +39,7 @@ export class UrlService {
     return newUrl;
   }
 
-  async manualCode(short_code: string | null) {
+  async manualCode(short_code: string | null): Promise<string | null> {
     if(!short_code)
       return null;
     const url = await this.getUrlByCode(short_code);
