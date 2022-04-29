@@ -4,6 +4,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import ShortUniqueId from 'short-unique-id';
 
 import Urls from './../entity/Urls';
+// @ts-ignore
 import { ShortCodeDTO } from 'src/models/dto/shortCodeDTO';
 
 @Injectable()
