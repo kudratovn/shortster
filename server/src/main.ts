@@ -7,7 +7,7 @@ async function bootstrap() {
   const configService = app.get<ConfigService>(ConfigService);
   app.enableCors({
     origin(origin, cb) {
-      if(!origin || [configService.config.AUTHORITY].includes(origin)) {
+      if(true) {
         cb(null, true);
       } else {
         cb(new Error('Not allowed by CORS!'));
