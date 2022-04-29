@@ -4,7 +4,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import ShortUniqueId from 'short-unique-id';
 
 import Urls from './../entity/Urls';
-import { ShortCodeDTO } from 'src/models/dto/shortCodeDTO';
+import { ShortCodeDTO } from './../models/dto/shortCodeDTO';
 
 @Injectable()
 export class UrlService {
