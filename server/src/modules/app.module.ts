@@ -4,7 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UrlController } from '../controllers/UrlController';
 import { ConfigService } from '../services/ConfigService';
 import { UrlService } from '../services/UrlService';
-import Urls from 'src/entity/Urls';
+import Urls from './../entity/Urls';
 
 import { PRODUCTION } from '../constants/env';
 

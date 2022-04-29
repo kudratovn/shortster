@@ -11,12 +11,12 @@ import {
 } from '@nestjs/common';
 import { Response } from 'express';
 
-import { UrlService } from 'src/services/UrlService';
+import { UrlService } from './../services/UrlService';
 
-import { ShortCodeDTO } from 'src/models/dto/shortCodeDTO';
-import { YupValidationPipe } from 'src/pipes/YupValidationPipe';
-import { patchRuleValidationScheme } from 'src/validator/createUrlValidationSchena';
-import { RESULT_STATUSES } from 'src/constants/common';
+import { ShortCodeDTO } from './../models/dto/shortCodeDTO';
+import { YupValidationPipe } from './..//pipes/YupValidationPipe';
+import { patchRuleValidationScheme } from './../validator/createUrlValidationSchena';
+import { RESULT_STATUSES } from './../constants/common';
 @Controller()
 export class UrlController {
   constructor(private readonly urlService: UrlService) { }
@@ -29,7 +29,7 @@ export class UrlController {
     ) {
     const url = await this.urlService.createUrl(dto);
     if(url) {
-      return res.send({
+      return res.status(201).send({
         status: RESULT_STATUSES.SUCCESS,
         data: url,
       })
